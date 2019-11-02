@@ -1,0 +1,18 @@
+﻿<div>
+    <h1>MarkDownParserの作成</h1>
+
+    @* <input id="inputMarkDown" type="text" @bind-value:event="oninput"/> *@
+    @* <input id="outHtml" @bind="outHtmlText"> *@
+
+</div>
+
+@code {
+    public string inputMarkDownText { get; set; }
+
+    public string outHtmlText { get; set; }
+
+    private void OnChangeMarkDownText()
+    {
+        outHtmlText = inputMarkDownText;
+    }
+}
