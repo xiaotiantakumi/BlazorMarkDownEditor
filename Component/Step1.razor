@@ -2,14 +2,14 @@
 <div>
     <input type="text" @bind="@input" />
     <button @onclick="ExportText">ExportText</button>
-    <div>@((MarkupString)output)</div>
+    <div>@((MarkupString)outputTxt)</div>
 </div>
 
 @code {
     public string input { get; set; }
-    public string output { get; set; }
+    public string outputTxt { get; set; }
     private void ExportText()
     {
-        this.output = Markdown.ToHtml(this.input);
+        this.outputTxt = Markdown.ToHtml(this.input);
     }
 }
