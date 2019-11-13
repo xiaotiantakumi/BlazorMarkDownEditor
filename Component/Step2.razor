@@ -1,0 +1,14 @@
+﻿@using Markdig
+<div>
+    <input type="text" @bind-value="@input" @bind-value:event="oninput" @onkeyup="OnKeyUpEvent"/>
+    <div>@((MarkupString)outputTxt)</div>
+</div>
+
+@code {
+    public string input { get; set; } = string.Empty;
+    public string outputTxt { get; set; }
+    private void OnKeyUpEvent(KeyboardEventArgs e)
+    {
+        this.outputTxt = Markdown.ToHtml(this.input);
+    }
+}
