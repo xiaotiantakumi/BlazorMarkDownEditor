@@ -1,0 +1,23 @@
+﻿@using System.ComponentModel.Design.Serialization
+@using Markdig
+<div>
+    <div class="container">
+        <div class="row" style="height: 500px">
+            <div class="col-6">
+                <textarea class="form-control h-100" type="text" @bind-value="@input" @bind-value:event="oninput" @onkeyup="OnKeyUpEvent" />
+            </div>
+            <div class="col-6">
+                <div>@((MarkupString)outputTxt)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    public string input { get; set; } = string.Empty;
+    public string outputTxt { get; set; }
+    private void OnKeyUpEvent(KeyboardEventArgs e)
+    {
+        this.outputTxt = Markdown.ToHtml(this.input);
+    }
+}
